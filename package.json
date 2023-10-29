@@ -27,6 +27,7 @@
     "dependencies": {
         "bootstrap": "^5.2.3",
         "font-awesome": "^4.7.0",
-        "moment": "^2.29.4"
+        "moment": "^2.29.4",
+        "vue-toastification": "^2.0.0-rc.5"
     }
 }

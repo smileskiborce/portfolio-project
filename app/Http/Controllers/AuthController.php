@@ -16,6 +16,11 @@ class AuthController extends Controller
         return Inertia::render('Auth/Login');
     }
 
+    public function showRegister(): Response
+    {
+        return Inertia::render('Auth/Register');
+    }
+
     public function login(Request $request): RedirectResponse
     {
         if (Auth::attempt($request->all())) {
@@ -28,8 +33,16 @@ class AuthController extends Controller
         }
 
         return back()->withErrors([
-            'username' => 'Внесовте неточно корисничко име или лозинка.',
+            'username' => 'You entered an incorrect username or password.',
         ])->onlyInput('email');
+    }
+
+    public function register(Request $request): RedirectResponse
+    {
+        $request->validate([
+            'email'=>['required','email','unique:users']
+        ]);
+        return back()->with('success','Successfully sent message');
     }
 
     public function logout(Request $request): RedirectResponse

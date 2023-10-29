@@ -5,11 +5,11 @@
         <div class="col col-12 col-md-6 col-lg-5">
             <div class="card shadow-lg bg-dark">
                 <div class="card-body p-md-5 text-white text-center">
-                    <h2 class="display-6 fw-bold mb-4">Најави се</h2>
+                    <h2 class="display-6 fw-bold mb-4">Log in</h2>
                     <form @submit.prevent="login">
                         <div class="mb-3">
                             <label for="username" class="form-label"
-                                >Корисничко име</label
+                                >Username</label
                             >
                             <input
                                 id="username"
@@ -27,7 +27,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label"
-                                >Лозинка</label
+                                >Password</label
                             >
                             <input
                                 id="password"
@@ -38,13 +38,17 @@
                                 aria-describedby="password"
                             />
                             <div
-                                v-if="form.errors.email"
+                                v-if="form.errors.password"
                                 class="invalid-feedback"
-                                v-text="form.errors.email"
+                                v-text="form.errors.password"
                             />
                         </div>
+                        <a class="d-block text-decoration-none pb-2 text-primary pointer-event btn" :href="route('show_register')">
+                            Register
+                        </a>
+
                         <button type="submit" class="btn btn-primary">
-                            Најави се
+                            Log in
                         </button>
                     </form>
                 </div>
@@ -68,6 +72,7 @@ const form = useForm({
     username: "",
     password: "",
 });
+
 
 const login = () => {
     form.post(route("login"));

@@ -1,5 +1,5 @@
 <template>
-    <head-title title="Улоги" />
+    <head-title title="Role" />
     <table-view
         title="Roles"
         button-text="Add role"

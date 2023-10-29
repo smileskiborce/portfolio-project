@@ -1,6 +1,6 @@
 <template>
     <Head>
-        <title>Почетна</title>
+        <title>Home</title>
     </Head>
 </template>
 

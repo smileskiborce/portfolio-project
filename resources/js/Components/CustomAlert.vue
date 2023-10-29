@@ -1,21 +1,5 @@
 <template>
-    <div
-        v-if="success || error"
-        :class="{ 'alert-danger': error, 'alert-success': success }"
-        class="alert alert-dismissible fade show text-center m-0"
-        role="alert"
-    >
-        <span v-if="success"> <i class="fa fa-check"></i> {{ success }} </span>
-        <span v-else>
-            <i class="fa fa-exclamation-circle"></i> {{ error }}
-        </span>
-        <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="alert"
-            aria-label="Close"
-        ></button>
-    </div>
+    <div></div>
 </template>
 
 <script>
@@ -24,9 +8,36 @@ export default {
 };
 </script>
 <script setup>
-import { useCommonBase } from "../Mixins/useCommonBase";
+import {useBase} from "../Mixins/useBase.js";
+import { useToast } from "vue-toastification";
+import {watch} from "vue";
 
-const { success, error } = useCommonBase();
+const {success, error} = useBase();
+watch(
+    () => success.value,
+    () => {
+        if (success.value !== null) successFunc(success.value);
+    },
+    {deep: true}
+);
+watch(
+    () => error.value,
+    () => {
+        if (error.value !== null) errorFunc(error.value);
+    },
+    {deep: true}
+);
+const errorFunc = (val) => {
+    const toast = useToast();
+    toast.error(val);
+};
+
+const successFunc = (val) => {
+    const toast = useToast();
+    toast.success(val,{
+        timeout:4000
+    });
+};
 </script>
 
 <style scoped></style>
