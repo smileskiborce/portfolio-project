@@ -16,7 +16,6 @@ class UserController extends Controller
 {
     public function index(Request $request): Response
     {
-        $this->authorize('viewAny', User::class);
 
         $search = $request->get('search');
 
@@ -37,7 +36,6 @@ class UserController extends Controller
      */
     public function store(UserRequest $request): RedirectResponse
     {
-        $this->authorize('create', User::class);
         DB::transaction(function () use ($request) {
             $user = User::query()
                 ->create($request->validated());
@@ -53,7 +51,6 @@ class UserController extends Controller
      */
     public function update(User $user, UserRequest $request): RedirectResponse
     {
-        $this->authorize('update', User::class);
         DB::transaction(function () use ($request, $user) {
             $user->fill($request->validated());
             $user->syncRoles(Role::query()
@@ -69,7 +66,6 @@ class UserController extends Controller
      */
     public function destroy(User $user): RedirectResponse
     {
-        $this->authorize('delete', User::class);
         $user->delete();
 
         return back()->with('success', 'Успешно го избришавте овој корисник');

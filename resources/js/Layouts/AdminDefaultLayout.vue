@@ -145,7 +145,7 @@ const menuOptions = ref([
         name: "Users",
         icon: "fa-users",
         link: "users.index",
-        can: can.value.users.viewAny,
+        can: true,
     },
     {
         name: "Roles",

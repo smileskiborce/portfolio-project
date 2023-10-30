@@ -27,7 +27,7 @@
                             class="btn btn-secondary"
                             data-bs-dismiss="modal"
                         >
-                            Затвори
+                            Close
                         </button>
                         <slot name="footer"></slot>
                     </div>

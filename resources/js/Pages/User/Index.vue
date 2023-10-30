@@ -5,7 +5,7 @@
         button-text="add user"
         :table-headers="tableHeaders"
         target-store-modal="#storeUserModal"
-        :can-see-create-button="can.users.create"
+        :can-see-create-button="true"
         :links="users.links"
         search-bar-placeholder="Search user..."
         route-name="users.index"
@@ -34,7 +34,7 @@
             <td>
                 <div class="d-flex flex-nowrap">
                     <button
-                        v-if="can.users.update"
+                        v-if="true"
                         data-bs-toggle="modal"
                         data-bs-target="#updateUserModal"
                         :data-bs-user="JSON.stringify(user)"
@@ -43,7 +43,7 @@
                         <i class="fa fa-pencil"></i> Edit
                     </button>
                     <button
-                        v-if="can.users.delete"
+                        v-if="true"
                         class="btn btn-sm btn-primary ms-1 text-nowrap"
                         data-bs-toggle="modal"
                         data-bs-target="#deleteModal"
